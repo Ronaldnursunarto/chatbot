@@ -33,7 +33,7 @@ async function login(data) {
     try {
        const {email,password}=data
        const user = await prisma.user.findUnique({ where: { email } });
-       if (!user) throw new ApiError(400,"Invalid email");
+       if (!user) throw new ApiError(409,"Invalid email");
 
        // Cek password
        const isPasswordValid = bcrypt.comparePassword(password, user.password);
@@ -42,7 +42,7 @@ async function login(data) {
        // Buat token JWT
        const token = jwt.generateToken({ id: user.id, email: user.email });
 
-       return {token,user}
+       return {token}
     } catch (error) {
         console.log(error);
         throw new ApiError(error.statusCode || 400, error.message); 

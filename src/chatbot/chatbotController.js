@@ -4,7 +4,7 @@ const responseWrapper= require('../helper/wrapper')
 class ChatbotController {
     static async chat(req, res) {
         try {
-            const userId = req.userData.id; // Dari token JWT
+            const userId = req.userData.id; 
             const { userInput } = req.body;
 
             if (!userInput) {
@@ -53,7 +53,7 @@ class ChatbotController {
     static async updateBotChat(req,res){
         try {
             const { id } = req.params;
-            const { newPrompt } = req.body; // Ambil prompt baru dari request body
+            const { newPrompt } = req.body; 
     
             if (!newPrompt) {
                 return res.status(400).json({ message: "Prompt tidak boleh kosong" });
