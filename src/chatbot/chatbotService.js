@@ -1,6 +1,5 @@
 const prisma=require('../../prisma/prismaClient')
 require("dotenv").config();
-const axios = require("axios");
 const { ApiError } = require('../helper/error');
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
@@ -16,10 +15,10 @@ async function sendChatbot(userId, userInput) {
         });
 
         
-        const prompt = `kamu adalah pakar hp,berikan saran saran hp terbaik di dunia sekarang ini'${userInput}'`;
+        const prompt = `kamu adalah sistem yang sangat mengetahui apa itu Google Developers Groups On Campus'${userInput}'`;
 
         const model = genAI.getGenerativeModel({ 
-            model: "gemini-1.5-flash",
+            model: "gemini-2.5-flash",
         });
         const result = await model.generateContent(prompt);
         const response = await result.response;
