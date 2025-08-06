@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
-const PORT= 3000
+require("dotenv").config();
+const PORT= process.env.PORT
 const userRoutes=require('../src/user/userRoute')
 const chatRoutes=require('../src/chatbot/chatbotRoute')
 const cors = require("cors")
