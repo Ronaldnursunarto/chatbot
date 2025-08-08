@@ -1,13 +1,14 @@
 #!/bin/sh
 
-echo "⏳ Waiting for DB to be reachable..."
+echo "🔄 Waiting for PostgreSQL..."
+
 until nc -z postgres 5432; do
-  echo "Database not up yet... waiting"
+  echo "⏳ Still waiting for DB..."
   sleep 2
 done
 
-echo "✅ DB is up. Running migrations..."
+echo "✅ Running prisma migrate deploy..."
 npx prisma migrate deploy
 
-echo "🚀 Starting app..."
+echo "🚀 Starting the server..."
 node src/app.js
